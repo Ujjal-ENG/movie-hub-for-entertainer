@@ -1,8 +1,9 @@
 import { Button } from '@mui/material';
+import { addDoc } from 'firebase/firestore';
 import React, { useState } from 'react';
-
 import { TailSpin } from 'react-loader-spinner';
-
+import { moviesRef } from './firebase/firebase';
+import swal from 'sweetalert';
 const AddMovie = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [form, setForm] = useState({
@@ -13,6 +14,26 @@ const AddMovie = () => {
     });
     const { title, year, description, img } = form;
 
+    const addMovie = async () => {
+        setIsLoading(true);
+        try {
+            await addDoc(moviesRef, form);
+            swal({
+                title: 'Successfully added movie',
+                icon: 'success',
+                buttons: false,
+                timer: 3000
+            });
+        } catch (error) {
+            swal({
+                title: 'Error Occured and the error is' + error,
+                icon: 'error',
+                buttons: true
+            });
+        }
+        setIsLoading(false);
+    };
+
     const handleChange = (e) => {
         setForm((ps) => ({
             ...ps,
@@ -21,7 +42,13 @@ const AddMovie = () => {
     };
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(form);
+        addMovie();
+        setForm({
+            title: '',
+            year: 0,
+            description: '',
+            img: ''
+        });
     };
     return (
         <div>
@@ -70,9 +97,9 @@ const AddMovie = () => {
                                         image
                                     </label>
                                     <input
-                                        type="number"
-                                        id="year"
-                                        name="year"
+                                        type="text"
+                                        id="img"
+                                        name="img"
                                         value={img}
                                         onChange={handleChange}
                                         className="w-full bg-gray-100  rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"

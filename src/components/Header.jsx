@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <div className="text-3xl text-red-500 font-bold [-3 border-b-2 border-gray-400 flex items-center justify-between p-4">
+        <div className="sticky top-0 z-50 bg-black text-3xl text-red-500 font-bold [-3 border-b-2 border-gray-400 flex items-center justify-between p-4">
             <Link to="/">
                 Movie <span className="text-white uppercase">Hub</span>{' '}
             </Link>

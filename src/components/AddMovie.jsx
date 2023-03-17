@@ -1,7 +1,10 @@
 import { Button } from '@mui/material';
 import React, { useState } from 'react';
 
+import { TailSpin } from 'react-loader-spinner';
+
 const AddMovie = () => {
+    const [isLoading, setIsLoading] = useState(false);
     const [form, setForm] = useState({
         title: '',
         year: 0,
@@ -91,7 +94,7 @@ const AddMovie = () => {
                             </div>
                             <div className="p-2 w-full flex justify-center">
                                 <Button variant="contained" type="submit">
-                                    Add Movie
+                                    {isLoading ? <TailSpin height={25} color="white" /> : 'Add Movie'}
                                 </Button>
                             </div>
                         </div>

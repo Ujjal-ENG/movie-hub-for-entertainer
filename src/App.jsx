@@ -4,6 +4,7 @@ import Header from './components/Header';
 
 import { Routes, Route } from 'react-router-dom';
 import AddMovie from './components/AddMovie';
+import Details from './components/Details';
 
 const App = () => {
     return (
@@ -12,6 +13,7 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<Cards />} />
                 <Route exact path="/add-movie" element={<AddMovie />} />
+                <Route exact path="/details" element={<Details />} />
             </Routes>
         </>
     );

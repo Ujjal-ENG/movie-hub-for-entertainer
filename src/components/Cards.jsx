@@ -1,6 +1,7 @@
 import { getDocs } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { Dna } from 'react-loader-spinner';
+import { Link } from 'react-router-dom';
 import Card from './Card';
 import { moviesRef } from './firebase/firebase';
 
@@ -28,7 +29,12 @@ export default function Cards() {
                 <div className="grid grid-cols-4 justify-items-center mt-10 gap-6">
                     {data &&
                         data.map((movie, i) => {
-                            return <Card key={i} data={movie} />;
+                            return (
+                                <Link key={i} to="/details" state={movie}>
+                                    {' '}
+                                    <Card data={movie} />
+                                </Link>
+                            );
                         })}
                 </div>
             )}

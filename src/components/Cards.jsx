@@ -1,7 +1,6 @@
 import { getDocs } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { Dna } from 'react-loader-spinner';
-import { movieData } from '../dummtData';
 import Card from './Card';
 import { moviesRef } from './firebase/firebase';
 
